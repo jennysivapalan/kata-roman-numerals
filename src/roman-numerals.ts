@@ -12,3 +12,24 @@ export function singleNumeral(x: number) {
   const numeral = singleNumeralToDigits.find((value) => value.num === x);
   return numeral ? numeral.romanNumeral : "No value found";
 }
+
+export function closestNumerals(input: number) {
+  const numeralsSmallerThanInput = singleNumeralToDigits.filter(
+    (value) => value.num <= input
+  );
+
+  const numeralsBiggerThanInput = singleNumeralToDigits.filter(
+    (value) => value.num > input
+  );
+
+  if (
+    numeralsSmallerThanInput.length === 0 ||
+    numeralsBiggerThanInput.length === 0
+  )
+    return "Out of range";
+  else
+    return [
+      numeralsSmallerThanInput[numeralsSmallerThanInput.length - 1],
+      numeralsBiggerThanInput[0],
+    ];
+}
