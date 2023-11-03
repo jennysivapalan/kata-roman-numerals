@@ -17,7 +17,7 @@ describe("test singleNumeral function", () => {
   });
 });
 
-describe("test  function", () => {
+describe("test closestNumerals function", () => {
   //
   it("Returns the two numerals in the list surrounding a number ", () => {
     expect(closestNumerals(3)).toEqual([
