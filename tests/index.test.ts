@@ -15,7 +15,7 @@ describe("test specialNumeral function", () => {
 
 describe("test getNumeral function", () => {
   //
-  it("Returns the roman numeral for small number", () => {
+  it("Returns the roman numeral for numbers under 10", () => {
     expect(getNumeral(1)).toBe("I");
     expect(getNumeral(2)).toBe("II");
     expect(getNumeral(3)).toBe("III");
@@ -26,5 +26,11 @@ describe("test getNumeral function", () => {
     expect(getNumeral(8)).toBe("VIII");
     expect(getNumeral(9)).toBe("IX");
     expect(getNumeral(10)).toBe("X");
+  });
+
+  it("Returns error message if number is bigger than 3000", () => {
+    expect(getNumeral(3000)).toBe("Value too large");
+    expect(getNumeral(10000)).toBe("Value too large");
+    expect(getNumeral(5999)).toBe("Value too large");
   });
 });

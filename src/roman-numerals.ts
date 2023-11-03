@@ -23,6 +23,8 @@ export function specialNumeral(x: number) {
 }
 
 export function getNumeral(num: number) {
+  if (num >= 3000) return "Value too large";
+
   const numeralInList = specialNumeral(num);
 
   if (numeralInList === undefined) {
