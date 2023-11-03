@@ -16,12 +16,16 @@ describe("test specialNumeral function", () => {
 
 describe("test getNumeral function", () => {
   //
-  it("Returns the roman numeral for small number not in the two lists", () => {
+  it("Returns the roman numeral for small number", () => {
+    expect(getNumeral(1)).toBe("I");
     expect(getNumeral(2)).toBe("II");
     expect(getNumeral(3)).toBe("III");
     expect(getNumeral(4)).toBe("IV");
+    expect(getNumeral(5)).toBe("V");
     expect(getNumeral(6)).toBe("VI");
     expect(getNumeral(7)).toBe("VII");
     expect(getNumeral(8)).toBe("VIII");
+    expect(getNumeral(9)).toBe("IX");
+    expect(getNumeral(10)).toBe("X");
   });
 });
