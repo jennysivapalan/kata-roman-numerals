@@ -22,3 +22,24 @@ export function specialNumeral(x: number) {
   const numeral = allSpecialNumerals.find((value) => value.num === x);
   return numeral ? numeral.romanNumeral : "No value found";
 }
+
+export function getNumeral(num: number) {
+  const numeralInList = specialNumeral(num);
+
+  if (numeralInList === "No value found") {
+    let numeral = "";
+
+    if (num < 4) {
+      for (let i = 0; i < num; i++) {
+        numeral += "I";
+      }
+      return numeral;
+    } else if (num > 5 && num < 9) {
+      numeral = "V";
+      for (let i = 5; i < num; i++) {
+        numeral += "I";
+      }
+      return numeral;
+    }
+  } else return numeralInList;
+}
