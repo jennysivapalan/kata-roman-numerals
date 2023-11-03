@@ -1,5 +1,4 @@
 const fivesAndTens: { num: number; romanNumeral: string }[] = [
-  { num: 1, romanNumeral: "I" },
   { num: 5, romanNumeral: "V" },
   { num: 10, romanNumeral: "X" },
   { num: 50, romanNumeral: "L" },
@@ -20,22 +19,22 @@ const foursAndNines: { num: number; romanNumeral: string }[] = [
 export function specialNumeral(x: number) {
   const allSpecialNumerals = fivesAndTens.concat(foursAndNines);
   const numeral = allSpecialNumerals.find((value) => value.num === x);
-  return numeral ? numeral.romanNumeral : "No value found";
+  return numeral ? numeral.romanNumeral : undefined;
 }
 
 export function getNumeral(num: number) {
   const numeralInList = specialNumeral(num);
 
-  if (numeralInList === "No value found") {
+  if (numeralInList === undefined) {
     let numeral = "";
-    let x = 0;
+    let startingNumber = 0;
 
     if (num > 5 && num < 9) {
-      x = 5;
+      startingNumber = 5;
       numeral = "V";
     }
     if (num < 9) {
-      for (let i = x; i < num; i++) {
+      for (let i = startingNumber; i < num; i++) {
         numeral += "I";
       }
       return numeral;
