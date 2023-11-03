@@ -28,15 +28,14 @@ export function getNumeral(num: number) {
 
   if (numeralInList === "No value found") {
     let numeral = "";
+    let x = 0;
 
-    if (num < 4) {
-      for (let i = 0; i < num; i++) {
-        numeral += "I";
-      }
-      return numeral;
-    } else if (num > 5 && num < 9) {
+    if (num > 5 && num < 9) {
+      x = 5;
       numeral = "V";
-      for (let i = 5; i < num; i++) {
+    }
+    if (num < 9) {
+      for (let i = x; i < num; i++) {
         numeral += "I";
       }
       return numeral;
