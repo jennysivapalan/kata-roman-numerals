@@ -28,20 +28,24 @@ export function getNumeral(num: number) {
   const numeralInList = specialNumeral(num);
 
   if (numeralInList === undefined) {
-    let numeral = "";
-    let startingNumber = 0;
-
-    if (num > 5 && num < 9) {
-      startingNumber = 5;
-      numeral = "V";
-    }
-    if (num < 9) {
-      for (let i = startingNumber; i < num; i++) {
-        numeral += "I";
-      }
-      return numeral;
-    }
+    return getNumeralLessThan10(num);
   } else return numeralInList;
+}
+
+function getNumeralLessThan10(num: number) {
+  let numeral = "";
+  let startingNumber = 0;
+
+  if (num > 5 && num < 9) {
+    startingNumber = 5;
+    numeral = "V";
+  }
+  if (num < 9) {
+    for (let i = startingNumber; i < num; i++) {
+      numeral += "I";
+    }
+    return numeral;
+  }
 }
 
 /**
