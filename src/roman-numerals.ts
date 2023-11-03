@@ -1,4 +1,4 @@
-const singleNumeralToDigits: { num: number; romanNumeral: string }[] = [
+const fivesAndTens: { num: number; romanNumeral: string }[] = [
   { num: 1, romanNumeral: "I" },
   { num: 5, romanNumeral: "V" },
   { num: 10, romanNumeral: "X" },
@@ -8,28 +8,17 @@ const singleNumeralToDigits: { num: number; romanNumeral: string }[] = [
   { num: 1000, romanNumeral: "M" },
 ];
 
-export function singleNumeral(x: number) {
-  const numeral = singleNumeralToDigits.find((value) => value.num === x);
+const foursAndNines: { num: number; romanNumeral: string }[] = [
+  { num: 4, romanNumeral: "IV" },
+  { num: 9, romanNumeral: "IX" },
+  { num: 40, romanNumeral: "XL" },
+  { num: 90, romanNumeral: "XC" },
+  { num: 400, romanNumeral: "CD" },
+  { num: 900, romanNumeral: "CM" },
+];
+
+export function specialNumeral(x: number) {
+  const allSpecialNumerals = fivesAndTens.concat(foursAndNines);
+  const numeral = allSpecialNumerals.find((value) => value.num === x);
   return numeral ? numeral.romanNumeral : "No value found";
-}
-
-export function closestNumerals(input: number) {
-  const numeralsSmallerThanInput = singleNumeralToDigits.filter(
-    (value) => value.num <= input
-  );
-
-  const numeralsBiggerThanInput = singleNumeralToDigits.filter(
-    (value) => value.num > input
-  );
-
-  if (
-    numeralsSmallerThanInput.length === 0 ||
-    numeralsBiggerThanInput.length === 0
-  )
-    return "Out of range";
-  else
-    return [
-      numeralsSmallerThanInput[numeralsSmallerThanInput.length - 1],
-      numeralsBiggerThanInput[0],
-    ];
 }
