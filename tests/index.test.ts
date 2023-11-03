@@ -1,4 +1,8 @@
-import { specialNumeral, getNumeral } from "../src/roman-numerals";
+import {
+  specialNumeral,
+  getNumeral,
+  numAsArrayToThePower,
+} from "../src/roman-numerals";
 
 describe("test specialNumeral function", () => {
   //
@@ -32,5 +36,17 @@ describe("test getNumeral function", () => {
     expect(getNumeral(3000)).toBe("Value too large");
     expect(getNumeral(10000)).toBe("Value too large");
     expect(getNumeral(5999)).toBe("Value too large");
+  });
+});
+
+describe("test numAsArrayToThePower function", () => {
+  //
+  it("Returns array of a number with the 10 to power value ", () => {
+    expect(numAsArrayToThePower(51)).toEqual([50, 1]);
+    expect(numAsArrayToThePower(346)).toEqual([300, 40, 6]);
+    expect(numAsArrayToThePower(2875)).toEqual([2000, 800, 70, 5]);
+  });
+  it("Returns error message if number is bigger than 3000", () => {
+    expect(numAsArrayToThePower(3000)).toEqual("Value too large");
   });
 });
