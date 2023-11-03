@@ -1,4 +1,6 @@
 const fivesAndTens: { num: number; romanNumeral: string }[] = [
+  { num: 1, romanNumeral: "I" },
+
   { num: 5, romanNumeral: "V" },
   { num: 10, romanNumeral: "X" },
   { num: 50, romanNumeral: "L" },
@@ -26,9 +28,33 @@ export function getNumeral(num: number) {
   if (num >= 3000) return "Value too large";
 
   const numeralInList = specialNumeral(num);
-
   if (numeralInList === undefined) {
-    return getNumeralLessThan10(num);
+    if (num < 10) {
+      return getNumeralLessThan10(num);
+    } else {
+      const numAsArrayToPower10 = numAsArrayToThePower(num);
+      if (numAsArrayToPower10 === undefined) return "Invalid value";
+
+      let finalNumeral = "";
+
+      for (let i = 0; i < numAsArrayToPower10.length; i++) {
+        const currentNum = numAsArrayToPower10[i];
+
+        let j = currentNum;
+        do {
+          if (j === 0) break;
+
+          const numeralClosest = getSpecialNumeralClosestTo(j);
+          finalNumeral += numeralClosest.romanNumeral;
+
+          j = j - numeralClosest.num;
+        } while (j > 1);
+        if (j <= 9) {
+          finalNumeral += getNumeralLessThan10(j);
+        }
+      }
+      return finalNumeral;
+    }
   } else return numeralInList;
 }
 
@@ -56,7 +82,7 @@ function getNumeralLessThan10(num: number) {
  * e.g. num: 2875 -> [2,8,7,5] -> [(2*10^3),(8*10^2), (7*10^1), (5*10^0) -> [2000, 800, 70, 5]
  */
 export function numAsArrayToThePower(num: number) {
-  if (num >= 3000) return "Value too large";
+  if (num >= 3000) return undefined;
 
   const numAsArray = num
     .toString()
@@ -71,4 +97,12 @@ export function numAsArrayToThePower(num: number) {
     powerOfNumber--;
   }
   return numAsArray;
+}
+
+export function getSpecialNumeralClosestTo(num: number) {
+  const allSpecialNumerals = fivesAndTens.concat(foursAndNines);
+  const numeral = allSpecialNumerals
+    .filter((value) => value.num <= num)
+    .sort((a, b) => a.num - b.num);
+  return numeral[numeral.length - 1];
 }

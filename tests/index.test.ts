@@ -2,6 +2,7 @@ import {
   specialNumeral,
   getNumeral,
   numAsArrayToThePower,
+  getSpecialNumeralClosestTo,
 } from "../src/roman-numerals";
 
 describe("test specialNumeral function", () => {
@@ -18,7 +19,6 @@ describe("test specialNumeral function", () => {
 });
 
 describe("test getNumeral function", () => {
-  //
   it("Returns the roman numeral for numbers under 10", () => {
     expect(getNumeral(1)).toBe("I");
     expect(getNumeral(2)).toBe("II");
@@ -37,6 +37,24 @@ describe("test getNumeral function", () => {
     expect(getNumeral(10000)).toBe("Value too large");
     expect(getNumeral(5999)).toBe("Value too large");
   });
+
+  it("Returns the roman numeral for numbers under 40", () => {
+    expect(getNumeral(10)).toBe("X");
+    expect(getNumeral(20)).toBe("XX");
+    expect(getNumeral(30)).toBe("XXX");
+
+    expect(getNumeral(11)).toBe("XI");
+    expect(getNumeral(17)).toBe("XVII");
+    expect(getNumeral(19)).toBe("XIX");
+
+    expect(getNumeral(22)).toBe("XXII");
+    expect(getNumeral(25)).toBe("XXV");
+    expect(getNumeral(29)).toBe("XXIX");
+
+    expect(getNumeral(33)).toBe("XXXIII");
+    expect(getNumeral(34)).toBe("XXXIV");
+    expect(getNumeral(38)).toBe("XXXVIII");
+  });
 });
 
 describe("test numAsArrayToThePower function", () => {
@@ -47,6 +65,55 @@ describe("test numAsArrayToThePower function", () => {
     expect(numAsArrayToThePower(2875)).toEqual([2000, 800, 70, 5]);
   });
   it("Returns error message if number is bigger than 3000", () => {
-    expect(numAsArrayToThePower(3000)).toEqual("Value too large");
+    expect(numAsArrayToThePower(3000)).toEqual(undefined);
+  });
+});
+
+describe("test getSpecialNumeralClosestTo function", () => {
+  //
+  it("Returns number and roman numeral closest and below to num in fivesAndTens and foursAndNines list for numbers up to 100", () => {
+    expect(getSpecialNumeralClosestTo(12)).toEqual({
+      num: 10,
+      romanNumeral: "X",
+    });
+    expect(getSpecialNumeralClosestTo(46)).toEqual({
+      num: 40,
+      romanNumeral: "XL",
+    });
+    expect(getSpecialNumeralClosestTo(67)).toEqual({
+      num: 50,
+      romanNumeral: "L",
+    });
+    expect(getSpecialNumeralClosestTo(95)).toEqual({
+      num: 90,
+      romanNumeral: "XC",
+    });
+    expect(getSpecialNumeralClosestTo(100)).toEqual({
+      num: 100,
+      romanNumeral: "C",
+    });
+  });
+
+  it("Returns number and roman numeral closest and below to num in fivesAndTens and foursAndNines list for numbers up to 1000", () => {
+    expect(getSpecialNumeralClosestTo(102)).toEqual({
+      num: 100,
+      romanNumeral: "C",
+    });
+    expect(getSpecialNumeralClosestTo(460)).toEqual({
+      num: 400,
+      romanNumeral: "CD",
+    });
+    expect(getSpecialNumeralClosestTo(700)).toEqual({
+      num: 500,
+      romanNumeral: "D",
+    });
+    expect(getSpecialNumeralClosestTo(950)).toEqual({
+      num: 900,
+      romanNumeral: "CM",
+    });
+    expect(getSpecialNumeralClosestTo(9999)).toEqual({
+      num: 1000,
+      romanNumeral: "M",
+    });
   });
 });
