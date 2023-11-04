@@ -1,18 +1,4 @@
-const specialNumerals: { num: number; romanNumeral: string }[] = [
-  { num: 1, romanNumeral: "I" },
-  { num: 5, romanNumeral: "V" },
-  { num: 10, romanNumeral: "X" },
-  { num: 50, romanNumeral: "L" },
-  { num: 100, romanNumeral: "C" },
-  { num: 500, romanNumeral: "D" },
-  { num: 1000, romanNumeral: "M" },
-  { num: 4, romanNumeral: "IV" },
-  { num: 9, romanNumeral: "IX" },
-  { num: 40, romanNumeral: "XL" },
-  { num: 90, romanNumeral: "XC" },
-  { num: 400, romanNumeral: "CD" },
-  { num: 900, romanNumeral: "CM" },
-];
+import { SPECIAL_NUMERALS } from "./special-numerals";
 
 export const numberToRomanNumeral = () => {
   const numeralArray: { num: number; romanNumeral: string }[] = [];
@@ -25,7 +11,7 @@ export const numberToRomanNumeral = () => {
 };
 
 export function specialNumeral(x: number) {
-  const numeral = specialNumerals.find((value) => value.num === x);
+  const numeral = SPECIAL_NUMERALS.find((value) => value.num === x);
   return numeral ? numeral.romanNumeral : undefined;
 }
 
@@ -105,9 +91,9 @@ export function numAsArrayToThePower(num: number) {
 }
 
 export function getSpecialNumeralClosestTo(num: number) {
-  const numeral = specialNumerals
-    .filter((value) => value.num <= num)
-    .sort((a, b) => a.num - b.num);
+  const numeral = SPECIAL_NUMERALS.filter((value) => value.num <= num).sort(
+    (a, b) => a.num - b.num
+  );
   return numeral[numeral.length - 1];
 }
 
