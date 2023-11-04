@@ -14,14 +14,16 @@ export function getNumeral(num: number) {
   if (num >= 3000) return "Value too large";
 
   const numeralInList = specialNumeral(num);
-  if (numeralInList === undefined) {
-    return num < 10 ? getNumeralLessThan10(num) : getNumeralBiggerThan10(num);
-  } else return numeralInList;
+  return numeralInList ? numeralInList : createNumeral(num);
 }
 
 export function specialNumeral(x: number) {
   const numeral = SPECIAL_NUMERALS.find((value) => value.num === x);
   return numeral ? numeral.romanNumeral : undefined;
+}
+
+function createNumeral(num: number) {
+  return num < 10 ? getNumeralLessThan10(num) : getNumeralBiggerThan10(num);
 }
 
 export function getNumeralLessThan10(num: number) {
