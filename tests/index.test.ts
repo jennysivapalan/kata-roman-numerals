@@ -150,7 +150,7 @@ describe("test numAsArrayToThePower function", () => {
 
 describe("test getSpecialNumeralClosestTo function", () => {
   //
-  it("Returns number and roman numeral closest and below to num in fivesAndTens and foursAndNines list for numbers up to 100", () => {
+  it("Returns number and roman numeral closest and under a number from the list of special numerals (for numbers up to 100)", () => {
     expect(getSpecialNumeralClosestTo(12)).toEqual({
       num: 10,
       romanNumeral: "X",
@@ -173,7 +173,7 @@ describe("test getSpecialNumeralClosestTo function", () => {
     });
   });
 
-  it("Returns number and roman numeral closest and below to num in fivesAndTens and foursAndNines list for numbers up to 1000", () => {
+  it("Returns number and roman numeral closest and under a number from the special numerals list (for numbers up to 1000)", () => {
     expect(getSpecialNumeralClosestTo(102)).toEqual({
       num: 100,
       romanNumeral: "C",
