@@ -69,7 +69,7 @@ function getNumeralBiggerThan10(num: number) {
 
 /**
  *
- * @param num converts each digit in a number to it's index power
+ * @param num converts each digit in a number multiplied by 10 to the power of the index
  * e.g. num : 51 -> [5,1] -> [(5*10^1), (5*10^0)] -> [50, 1] (output)
  * e.g. num: 346 -> [3,0,1] -> [(3*10^2), (4*10^1), (6*10^0)] -> [300, 40, 6]
  * e.g. num: 2875 -> [2,8,7,5] -> [(2*10^3),(8*10^2), (7*10^1), (5*10^0) -> [2000, 800, 70, 5]
