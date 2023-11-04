@@ -3,6 +3,7 @@ import {
   getNumeral,
   numAsArrayToThePower,
   getSpecialNumeralClosestTo,
+  getNumeralLessThan10,
 } from "../src/roman-numerals";
 
 describe("test specialNumeral function", () => {
@@ -15,6 +16,17 @@ describe("test specialNumeral function", () => {
 
   it("Returns No value found for value that does not exist", () => {
     expect(specialNumeral(55)).toBe(undefined);
+  });
+});
+
+describe("test getNumeralLessThan10 function", () => {
+  it("Returns the roman numeral for numbers under 8 excluding 4 and 5", () => {
+    expect(getNumeralLessThan10(1)).toBe("I");
+    expect(getNumeralLessThan10(2)).toBe("II");
+    expect(getNumeralLessThan10(3)).toBe("III");
+    expect(getNumeralLessThan10(6)).toBe("VI");
+    expect(getNumeralLessThan10(7)).toBe("VII");
+    expect(getNumeralLessThan10(8)).toBe("VIII");
   });
 });
 

@@ -58,7 +58,7 @@ export function getNumeral(num: number) {
   } else return numeralInList;
 }
 
-function getNumeralLessThan10(num: number) {
+export function getNumeralLessThan10(num: number) {
   let numeral = "";
   let startingNumber = 0;
 
