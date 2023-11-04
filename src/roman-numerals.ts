@@ -14,6 +14,16 @@ const specialNumerals: { num: number; romanNumeral: string }[] = [
   { num: 900, romanNumeral: "CM" },
 ];
 
+export const numberToRomanNumeral = () => {
+  const numeralArray: { num: number; romanNumeral: string }[] = [];
+
+  for (let i = 0; i < 3000; i++) {
+    const numeral = getNumeral(i);
+    numeral ? numeralArray.push({ num: i, romanNumeral: numeral }) : undefined;
+  }
+  return numeralArray;
+};
+
 export function specialNumeral(x: number) {
   const numeral = specialNumerals.find((value) => value.num === x);
   return numeral ? numeral.romanNumeral : undefined;
@@ -102,11 +112,6 @@ export function getSpecialNumeralClosestTo(num: number) {
 }
 
 export function getNumberForNumeral(numeral: string) {
-  const numeralArray: { num: number; romanNumeral: string }[] = [];
-
-  for (let i = 0; i < 3000; i++) {
-    const numeral = getNumeral(i);
-    numeral ? numeralArray.push({ num: i, romanNumeral: numeral }) : undefined;
-  }
-  return numeralArray.find((value) => value.romanNumeral === numeral)?.num;
+  return numberToRomanNumeral().find((value) => value.romanNumeral === numeral)
+    ?.num;
 }
