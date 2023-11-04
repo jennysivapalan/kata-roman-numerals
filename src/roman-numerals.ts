@@ -100,3 +100,13 @@ export function getSpecialNumeralClosestTo(num: number) {
     .sort((a, b) => a.num - b.num);
   return numeral[numeral.length - 1];
 }
+
+export function getNumberForNumeral(numeral: string) {
+  const numeralArray: { num: number; romanNumeral: string }[] = [];
+
+  for (let i = 0; i < 3000; i++) {
+    const numeral = getNumeral(i);
+    numeral ? numeralArray.push({ num: i, romanNumeral: numeral }) : undefined;
+  }
+  return numeralArray.find((value) => value.romanNumeral === numeral)?.num;
+}

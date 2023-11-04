@@ -4,6 +4,7 @@ import {
   numAsArrayToThePower,
   getSpecialNumeralClosestTo,
   getNumeralLessThan10,
+  getNumberForNumeral,
 } from "../src/roman-numerals";
 
 describe("test specialNumeral function", () => {
@@ -194,5 +195,20 @@ describe("test getSpecialNumeralClosestTo function", () => {
       num: 1000,
       romanNumeral: "M",
     });
+  });
+});
+
+describe("test getNumberForNumeral function", () => {
+  //
+  it("Returns number for a numeral", () => {
+    expect(getNumberForNumeral("X")).toBe(10);
+    expect(getNumberForNumeral("XVI")).toBe(16);
+    expect(getNumberForNumeral("XC")).toBe(90);
+    expect(getNumberForNumeral("CCCXLVIII")).toBe(348);
+    expect(getNumberForNumeral("MMCCCLXXXIX")).toBe(2389);
+  });
+
+  it("Returns undefined for a number not under 3000", () => {
+    expect(getNumberForNumeral("ABC")).toBe(undefined);
   });
 });
