@@ -55,6 +55,30 @@ describe("test getNumeral function", () => {
     expect(getNumeral(34)).toBe("XXXIV");
     expect(getNumeral(38)).toBe("XXXVIII");
   });
+
+  it("Returns the roman numeral for numbers between 40 and 50", () => {
+    expect(getNumeral(40)).toBe("XL");
+    expect(getNumeral(42)).toBe("XLII");
+    expect(getNumeral(44)).toBe("XLIV");
+
+    expect(getNumeral(45)).toBe("XLV");
+    expect(getNumeral(46)).toBe("XLVI");
+    expect(getNumeral(49)).toBe("XLIX");
+
+    expect(getNumeral(50)).toBe("L");
+  });
+
+  it("Returns the roman numeral for numbers between 50 and 100", () => {
+    expect(getNumeral(54)).toBe("LIV");
+    expect(getNumeral(65)).toBe("LXV");
+    expect(getNumeral(77)).toBe("LXXVII");
+
+    expect(getNumeral(89)).toBe("LXXXIX");
+    expect(getNumeral(95)).toBe("XCV");
+    expect(getNumeral(99)).toBe("XCIX");
+
+    expect(getNumeral(100)).toBe("C");
+  });
 });
 
 describe("test numAsArrayToThePower function", () => {
