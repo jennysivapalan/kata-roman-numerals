@@ -79,6 +79,35 @@ describe("test getNumeral function", () => {
 
     expect(getNumeral(100)).toBe("C");
   });
+
+  it("Returns the roman numeral for numbers between 100 and 500", () => {
+    expect(getNumeral(151)).toBe("CLI");
+    expect(getNumeral(298)).toBe("CCXCVIII");
+    expect(getNumeral(348)).toBe("CCCXLVIII");
+
+    expect(getNumeral(410)).toBe("CDX");
+    expect(getNumeral(444)).toBe("CDXLIV");
+    expect(getNumeral(478)).toBe("CDLXXVIII");
+    expect(getNumeral(494)).toBe("CDXCIV");
+
+    expect(getNumeral(500)).toBe("D");
+  });
+
+  it("Returns the roman numeral for numbers between 500 and 1000", () => {
+    expect(getNumeral(575)).toBe("DLXXV");
+    expect(getNumeral(643)).toBe("DCXLIII");
+    expect(getNumeral(784)).toBe("DCCLXXXIV");
+    expect(getNumeral(888)).toBe("DCCCLXXXVIII");
+    expect(getNumeral(894)).toBe("DCCCXCIV");
+
+    expect(getNumeral(909)).toBe("CMIX");
+    expect(getNumeral(937)).toBe("CMXXXVII");
+    expect(getNumeral(948)).toBe("CMXLVIII");
+    expect(getNumeral(955)).toBe("CMLV");
+    expect(getNumeral(999)).toBe("CMXCIX");
+
+    expect(getNumeral(1000)).toBe("M");
+  });
 });
 
 describe("test numAsArrayToThePower function", () => {
