@@ -108,6 +108,20 @@ describe("test getNumeral function", () => {
 
     expect(getNumeral(1000)).toBe("M");
   });
+
+  it("Returns the roman numeral for numbers between 1000 and 2999", () => {
+    expect(getNumeral(1009)).toBe("MIX");
+    expect(getNumeral(1478)).toBe("MCDLXXVIII");
+    expect(getNumeral(1500)).toBe("MD");
+    expect(getNumeral(1775)).toBe("MDCCLXXV");
+    expect(getNumeral(1999)).toBe("MCMXCIX");
+
+    expect(getNumeral(2012)).toBe("MMXII");
+    expect(getNumeral(2389)).toBe("MMCCCLXXXIX");
+    expect(getNumeral(2499)).toBe("MMCDXCIX");
+    expect(getNumeral(2804)).toBe("MMDCCCIV");
+    expect(getNumeral(2959)).toBe("MMCMLIX");
+  });
 });
 
 describe("test numAsArrayToThePower function", () => {
