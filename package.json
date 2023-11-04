@@ -1,10 +1,10 @@
 {
   "name": "ts-project-with-jest",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "roman-numerals.js",
   "scripts": {
     "test": "jest --watchAll",
-    "start": "nodemon src/index.ts"
+    "start": "nodemon src/roman-numerals.ts"
   },
   "keywords": [],
   "author": "",
