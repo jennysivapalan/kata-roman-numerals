@@ -10,43 +10,18 @@ export const numberToRomanNumeral = () => {
   return numeralArray;
 };
 
-export function specialNumeral(x: number) {
-  const numeral = SPECIAL_NUMERALS.find((value) => value.num === x);
-  return numeral ? numeral.romanNumeral : undefined;
-}
-
 export function getNumeral(num: number) {
   if (num >= 3000) return "Value too large";
 
   const numeralInList = specialNumeral(num);
   if (numeralInList === undefined) {
-    if (num < 10) {
-      return getNumeralLessThan10(num);
-    } else {
-      const numAsArrayToPower10 = numAsArrayToThePower(num);
-      if (numAsArrayToPower10 === undefined) return "Invalid value";
-
-      let finalNumeral = "";
-
-      for (let i = 0; i < numAsArrayToPower10.length; i++) {
-        const currentNum = numAsArrayToPower10[i];
-
-        let j = currentNum;
-        do {
-          if (j === 0) break;
-
-          const numeralClosest = getSpecialNumeralClosestTo(j);
-          finalNumeral += numeralClosest.romanNumeral;
-
-          j = j - numeralClosest.num;
-        } while (j > 1);
-        if (j <= 9) {
-          finalNumeral += getNumeralLessThan10(j);
-        }
-      }
-      return finalNumeral;
-    }
+    return num < 10 ? getNumeralLessThan10(num) : getNumeralBiggerThan10(num);
   } else return numeralInList;
+}
+
+export function specialNumeral(x: number) {
+  const numeral = SPECIAL_NUMERALS.find((value) => value.num === x);
+  return numeral ? numeral.romanNumeral : undefined;
 }
 
 export function getNumeralLessThan10(num: number) {
@@ -63,6 +38,31 @@ export function getNumeralLessThan10(num: number) {
     }
     return numeral;
   }
+}
+
+function getNumeralBiggerThan10(num: number) {
+  const numAsArrayToPower10 = numAsArrayToThePower(num);
+  if (numAsArrayToPower10 === undefined) return "Invalid value";
+
+  let finalNumeral = "";
+
+  for (let i = 0; i < numAsArrayToPower10.length; i++) {
+    const currentNum = numAsArrayToPower10[i];
+
+    let j = currentNum;
+    do {
+      if (j === 0) break;
+
+      const numeralClosest = getSpecialNumeralClosestTo(j);
+      finalNumeral += numeralClosest.romanNumeral;
+
+      j = j - numeralClosest.num;
+    } while (j > 1);
+    if (j <= 9) {
+      finalNumeral += getNumeralLessThan10(j);
+    }
+  }
+  return finalNumeral;
 }
 
 /**
