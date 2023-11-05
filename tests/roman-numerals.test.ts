@@ -1,7 +1,6 @@
 import {
   specialNumeral,
   getNumeral,
-  numAsArrayToThePower,
   getSpecialNumeralClosestTo,
   getNumeralLessThan10,
   getNumberForNumeral,
@@ -134,18 +133,6 @@ describe("test getNumeral function", () => {
     expect(getNumeral(2499)).toBe("MMCDXCIX");
     expect(getNumeral(2804)).toBe("MMDCCCIV");
     expect(getNumeral(2959)).toBe("MMCMLIX");
-  });
-});
-
-describe("test numAsArrayToThePower function", () => {
-  //
-  it("Returns array of a number with the 10 to power value ", () => {
-    expect(numAsArrayToThePower(51)).toEqual([50, 1]);
-    expect(numAsArrayToThePower(346)).toEqual([300, 40, 6]);
-    expect(numAsArrayToThePower(2875)).toEqual([2000, 800, 70, 5]);
-  });
-  it("Returns error message if number is bigger than 3000", () => {
-    expect(numAsArrayToThePower(3000)).toEqual(undefined);
   });
 });
 
