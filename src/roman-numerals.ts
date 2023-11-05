@@ -1,9 +1,9 @@
 import { SPECIAL_NUMERALS } from "./special-numerals";
 
-export const numberToRomanNumeral = () => {
+const numberToRomanNumeral = () => {
   const numeralArray: { num: number; romanNumeral: string }[] = [];
 
-  for (let i = 0; i < 3000; i++) {
+  for (let i = 1; i < 3000; i++) {
     const numeral = getNumeral(i);
     numeral ? numeralArray.push({ num: i, romanNumeral: numeral }) : undefined;
   }
@@ -23,36 +23,13 @@ export function specialNumeral(x: number) {
 }
 
 function createNumeral(num: number) {
-  return num < 10 ? getNumeralLessThan10(num) : getNumeralBiggerThan10(num);
-}
-
-export function getNumeralLessThan10(num: number) {
-  let numeral = "";
-  let startingNumber = 0;
-
-  if (num > 5 && num < 9) {
-    startingNumber = 5;
-    numeral = "V";
-  }
-  if (num < 9) {
-    for (let i = startingNumber; i < num; i++) {
-      numeral += "I";
-    }
-    return numeral;
-  }
-}
-
-function getNumeralBiggerThan10(num: number) {
   let finalNumeral = "";
   let i = num;
   do {
     const numeralClosest = getSpecialNumeralClosestTo(i);
     finalNumeral += numeralClosest.romanNumeral;
     i = i - numeralClosest.num;
-  } while (i > 1);
-  if (i <= 9) {
-    finalNumeral += getNumeralLessThan10(i);
-  }
+  } while (i > 0);
   return finalNumeral;
 }
 
