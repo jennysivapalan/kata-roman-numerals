@@ -6,7 +6,6 @@ import {
 } from "../src/roman-numerals";
 
 describe("test specialNumeral function", () => {
-  //
   it("Returns the roman numeral for number in the list ", () => {
     expect(specialNumeral(4)).toBe("IV");
     expect(specialNumeral(90)).toBe("XC");
@@ -124,7 +123,6 @@ describe("test getNumeral function", () => {
 });
 
 describe("test getSpecialNumeralClosestTo function", () => {
-  //
   it("Returns number and roman numeral closest and under a number from the list of special numerals (for numbers up to 100)", () => {
     expect(getSpecialNumeralClosestTo(12)).toEqual({
       num: 10,
@@ -173,7 +171,6 @@ describe("test getSpecialNumeralClosestTo function", () => {
 });
 
 describe("test getNumberForNumeral function", () => {
-  //
   it("Returns number for a numeral", () => {
     expect(getNumberForNumeral("X")).toBe(10);
     expect(getNumberForNumeral("XVI")).toBe(16);
